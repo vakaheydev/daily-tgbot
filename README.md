@@ -27,7 +27,7 @@
 
 Чтобы запустить все сервисы (REST API, клиент, MVC и Telegram-бот), выполните следующие команды:
 
-Перейдите в папку с докером в [REST_API](https://github.com/vakaheydev/daily-rest-api):
+Перейдите в папку с докером в [REST API](https://github.com/vakaheydev/daily-rest-api):
 ```sh
 cd ./docker
 ```
