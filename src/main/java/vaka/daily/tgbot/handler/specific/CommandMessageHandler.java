@@ -1,5 +1,6 @@
 package vaka.daily.tgbot.handler.specific;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.message.Message;
 import org.telegram.telegrambots.meta.generics.TelegramClient;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 import static vaka.daily.tgbot.core.update.MessageType.COMMAND;
 
+@Slf4j
 @Component
 public class CommandMessageHandler extends AbstractMessageHandler {
     private Map<String, CommandHandler> handlers;
@@ -24,6 +26,7 @@ public class CommandMessageHandler extends AbstractMessageHandler {
 
         handlers = Map.of(
                 "start", (msg) -> messageHandlerService.createResponse(COMMAND, msg),
+                "start login", (msg) -> messageHandlerService.createResponse(COMMAND, msg),
                 "id", (msg) -> String.valueOf(msg.getChatId())
         );
     }
@@ -31,6 +34,7 @@ public class CommandMessageHandler extends AbstractMessageHandler {
     @Override
     public void handle(Message message) {
         String command = getCommand(message.getText());
+        log.info("Command: {}", message.getText());
         CommandHandler commandHandler = handlers.getOrDefault(command, (msg) -> "Неизвестная команда :3");
         String result = commandHandler.handle(message);
         sendText(message.getChatId(), result);

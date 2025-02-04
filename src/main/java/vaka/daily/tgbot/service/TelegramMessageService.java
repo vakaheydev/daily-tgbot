@@ -3,6 +3,7 @@ package vaka.daily.tgbot.service;
 import com.vaka.daily_client.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.telegram.telegrambots.meta.api.methods.ParseMode;
 import org.telegram.telegrambots.meta.api.methods.send.SendAnimation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendSticker;
@@ -30,6 +31,7 @@ public class TelegramMessageService {
         send(SendMessage.builder()
                 .chatId(chatId)
                 .text(text)
+                .parseMode(ParseMode.MARKDOWN)
                 .build()
         );
     }

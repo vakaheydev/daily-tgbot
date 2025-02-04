@@ -2,6 +2,8 @@ package vaka.daily.tgbot.service;
 
 import com.vaka.daily_client.exception.ServerNotRespondingException;
 import com.vaka.daily_client.model.User;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.message.Message;
 import vaka.daily.tgbot.core.update.MessageType;
@@ -11,6 +13,11 @@ import java.util.Optional;
 
 @Service
 public class MessageHandlerService {
+    @Value("${mvc.hostname}")
+    private String mvcHostname;
+
+    @Value("${mvc.port}")
+    private String mvcPort;
     UserService userService;
     UserMessageFormatter userMessageFormatter;
 
@@ -49,7 +56,8 @@ public class MessageHandlerService {
             msg.append(userMessageFormatter.format(user));
         } else {
             msg.append(
-                    "Здравствуйте! Извините, я Вас не знаю :(\nСвяжите телеграм с Вашим аккаунтом в личном кабинете");
+                    "Здравствуйте! Чтобы привязать телеграм к Вашему аккаунту, перейдите по ссылке и подтвердите личность:\n\n");
+            msg.append("http://" + mvcHostname + ":" + mvcPort + "/login/" + tgId);
         }
 
         return msg.toString();
