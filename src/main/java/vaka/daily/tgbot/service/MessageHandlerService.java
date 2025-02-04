@@ -57,7 +57,7 @@ public class MessageHandlerService {
         } else {
             msg.append(
                     "Здравствуйте! Чтобы привязать телеграм к Вашему аккаунту, перейдите по ссылке и подтвердите личность:\n\n");
-            msg.append("http://" + mvcHostname + ":" + mvcPort + "/login/" + tgId);
+            msg.append("```http://" + mvcHostname + ":" + mvcPort + "/login/" + tgId + "```");
         }
 
         return msg.toString();
