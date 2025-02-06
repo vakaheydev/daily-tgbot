@@ -2,16 +2,12 @@ package vaka.daily.tgbot.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import vaka.daily.tgbot.service.TelegramMessageService;
 
-@Controller
 @Slf4j
-@RequestMapping("/api")
+@RestController
+@RequestMapping("/api/message")
 public class MessageController {
     TelegramMessageService service;
 
