@@ -31,4 +31,12 @@ public class UserService {
     public User getUserByLogin(String login) {
         return userClient.getByUniqueName(login);
     }
+
+    public User getUserById(Integer userId) {
+        return userClient.getById(userId);
+    }
+
+    public void updateUserById(Integer userId, User user) {
+        userClient.updateById(userId, user);
+    }
 }

@@ -56,8 +56,7 @@ public class MessageHandlerService {
             msg.append(userMessageFormatter.format(user));
         } else {
             msg.append(
-                    "Здравствуйте! Чтобы привязать телеграм к Вашему аккаунту, перейдите по ссылке и подтвердите личность:\n\n");
-            msg.append("```http://" + mvcHostname + ":" + mvcPort + "/login/" + tgId + "```");
+                    "Здравствуйте! Привязать телеграм к Вашему аккаунту можно на странице Вашего аккаунта в Vaka Daily");
         }
 
         return msg.toString();
