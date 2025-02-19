@@ -43,7 +43,7 @@ public class StartCommandHandler implements CommandHandler {
             var token = telegramBindingService.validate(encrypted);
 
             if (!token.isValid()) {
-                return "При попытке привязки аккаунта к телеграмму произошли ошибка. Пожалуйста, повторите ещё раз";
+                return "При попытке привязки аккаунта к телеграмму произошла ошибка. Пожалуйста, повторите ещё раз";
             }
 
             User user = token.getUser();
